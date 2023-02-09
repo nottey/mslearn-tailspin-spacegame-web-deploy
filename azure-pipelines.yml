@@ -87,19 +87,11 @@ stages:
         deploy:
           steps:
           - download: current
-            artifact: drop
-          
-          - task: AzureRmWebAppDeployment@4
-            inputs:
-              ConnectionType: 'AzureRM'
-              azureSubscription: 'Azure subscription 1(4d50eec7-7cc4-4a84-ac9b-7519cf49c314)'
-              appType: 'webAppLinux'
-              WebAppName: 'tailspin-space-game-web-dev-15881'
-              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+            artifact: drop 
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: 'Azure subscription 1 (4d50eec7-7cc4-4a84-ac9b-7519cf49c314)'
+              azureSubscription: 'Service Principal2'
               appName: '$(WebAppNameDev)'
               appType: "webApp"
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
