@@ -88,5 +88,5 @@ stages:
               azureSubscription: 'Azure subscription 1(4d50eec7-7cc4-4a84-ac9b-7519cf49c314)'
               appType: 'webAppLinux'
               WebAppName: 'tailspin-space-game-emn'
-              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
  
